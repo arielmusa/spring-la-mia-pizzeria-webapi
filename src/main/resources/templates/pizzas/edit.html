@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Pizzas</title>
+    <th:block th:replace="~{fragments/bootstrap :: bootstrap}"> </th:block>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Create new pizza</h1>
+      <form
+        class="row g-3"
+        method="post"
+        th:action="@{/pizzas/edit/{id}(id=${pizza.id})}"
+        th:object="${pizza}"
+      >
+        <div class="col-md-6">
+          <label for="name" class="form-label">Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            th:field="*{name}"
+          />
+        </div>
+        <div class="col-md-6">
+          <label for="description" class="form-label">Description</label>
+          <input
+            type="text"
+            class="form-control"
+            id="description"
+            th:field="*{description}"
+          />
+        </div>
+        <div class="col-md-6">
+          <label for="image_url" class="form-label">Image url</label>
+          <input
+            type="text"
+            class="form-control"
+            id="image_url"
+            th:field="*{image_url}"
+          />
+        </div>
+        <div class="col-md-6">
+          <label for="price" class="form-label">Price</label>
+          <input
+            type="number"
+            class="form-control"
+            id="price"
+            min="1"
+            th:field="*{price}"
+          />
+        </div>
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary">Create pizza</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
