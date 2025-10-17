@@ -1,10 +1,13 @@
 package org.lessons.java.spring_la_mia_pizzeria_relazioni.model;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Lob;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
@@ -27,6 +30,9 @@ public class Pizza {
 
     @Min(value = 0, message = "price must be positive")
     private double price;
+
+    @OneToMany(mappedBy = "pizza")
+    private List<SpecialOffers> specialOffers;
 
 
     // Getters and Setters
