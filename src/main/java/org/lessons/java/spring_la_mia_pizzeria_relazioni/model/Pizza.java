@@ -76,6 +76,15 @@ public class Pizza {
     public void setPrice(double price) {
         this.price = price;
     }
+
+    public List<SpecialOffers> getSpecialOffers() {
+        return this.specialOffers;
+    }
+
+    public void setSpecialOffers(List<SpecialOffers> specialOffers) {
+        this.specialOffers = specialOffers;
+    }
+
     @Override
     public String toString(){
         return String.format("%d - %s (%s) %.2f€", id, name, description, price);
