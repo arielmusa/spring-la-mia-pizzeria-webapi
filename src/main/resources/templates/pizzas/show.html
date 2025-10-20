@@ -9,6 +9,20 @@
     <div class="container">
       <div th:if="${pizza}">
         <h1 th:text="${pizza}"></h1>
+
+        <div th:each="offer : ${pizza.specialOffers}">
+          <h2 th:text="${offer}"></h2>
+          <a
+            th:href="@{/special-offers/{id}/edit(id=${offer.id})}"
+            class="btn btn-primary"
+            >edit offer</a
+          >
+        </div>
+      </div>
+      <div>
+        <a th:href="@{/pizzas/{id}/create-offer(id=${pizza.id})}"
+          >Create special offer</a
+        >
       </div>
 
       <div th:unless="${pizza}">
