@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Special Offer</title>
+    <th:block th:replace="~{fragments/bootstrap :: bootstrap}"> </th:block>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Create new special offer</h1>
+      <form
+        class="row g-3"
+        method="post"
+        th:action="@{/special-offers/create-offer}"
+        th:object="${offer}"
+      >
+        <div class="col-12" th:if="${#fields.hasErrors()}">
+          <ul class="alert alert-danger ps-5">
+            <li
+              th:each="error : ${#fields.allErrors()}"
+              th:text="${error}"
+            ></li>
+          </ul>
+        </div>
+        <input type="hidden" th:field="*{pizza.id}" />
+        <div class="col-md-6">
+          <label for="title" class="form-label">Title</label>
+          <input
+            type="text"
+            class="form-control"
+            id="title"
+            th:field="*{title}"
+          />
+        </div>
+        <div class="col-md-6">
+          <label for="date_begin" class="form-label">Date begin</label>
+          <input
+            type="date"
+            class="form-control"
+            id="date_begin"
+            th:field="*{date_begin}"
+          />
+        </div>
+        <div class="col-md-6">
+          <label for="date_end" class="form-label">Date end</label>
+          <input
+            type="date"
+            class="form-control"
+            id="date_end"
+            th:field="*{date_end}"
+          />
+        </div>
+
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary">Create offer</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
