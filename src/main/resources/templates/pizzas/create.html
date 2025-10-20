@@ -59,6 +59,22 @@
             th:field="*{price}"
           />
         </div>
+        <div class="col-md-6">
+          <h4 class="form-label">Ingredients</h4>
+          <div th:each="ingredient : ${ingredients}">
+            <input
+              type="checkbox"
+              class="form-check-input"
+              id="|ingredient-${ingredient.id}|"
+              th:field="*{ingredients}"
+              th:value="${ingredient.id}"
+            />
+            <label
+              id="|ingredient-${ingredient.id}|"
+              th:text="${ingredient}"
+            ></label>
+          </div>
+        </div>
         <div class="col-12">
           <button type="submit" class="btn btn-primary">Create pizza</button>
         </div>

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.lessons.java.spring_la_mia_pizzeria_relazioni.model.Pizza;
 import org.lessons.java.spring_la_mia_pizzeria_relazioni.model.SpecialOffers;
+import org.lessons.java.spring_la_mia_pizzeria_relazioni.repository.IngredientRepository;
 import org.lessons.java.spring_la_mia_pizzeria_relazioni.repository.PizzaRepository;
 /* import org.lessons.java.spring_la_mia_pizzeria_relazioni.repository.SpecialOffersRepository; */
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,9 @@ public class PizzaController {
 /*     @Autowired
     private SpecialOffersRepository specialOffersRepository; */
 
+    @Autowired
+    private IngredientRepository ingredientRepository;
+
     @GetMapping("")
     public String index(Model model) {
         List<Pizza> pizzas = pizzaRepository.findAll();
@@ -47,6 +51,7 @@ public class PizzaController {
     @GetMapping("/create")
     public String create(Model model) {
         model.addAttribute("pizza", new Pizza());
+        model.addAttribute("ingredients", ingredientRepository.findAll());
         return "pizzas/create";
     }
 

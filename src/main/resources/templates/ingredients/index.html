@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>ingredients</title>
+    <th:block th:replace="~{fragments/bootstrap :: bootstrap}"> </th:block>
+  </head>
+  <body>
+    <div class="container">
+      <div th:if="${ingredients.size() > 0}">
+        <h1 th:text="ingredients"></h1>
+        <div th:each="ingredient : ${ingredients}">
+          <h2 class="mb-3" th:text="${ingredient}"></h2>
+          <a
+            th:href="@{/ingredients/{id}(id=${ingredient.id})}"
+            class="btn btn-primary"
+          >
+            Check detail
+          </a>
+          <a
+            th:href="@{/ingredients/edit/{id}(id=${ingredient.id})}"
+            class="btn btn-primary"
+          >
+            edit
+          </a>
+          <form
+            action="#"
+            method="post"
+            th:action="@{/ingredients/delete/{id}(id=${ingredient.id})}"
+          >
+            <button type="submit" class="btn btn-danger mt-2">Delete</button>
+          </form>
+        </div>
+      </div>
+
+      <div th:unless="${ingredients.size() > 0}">
+        <p>No ingredients available</p>
+      </div>
+    </div>
+  </body>
+</html>
