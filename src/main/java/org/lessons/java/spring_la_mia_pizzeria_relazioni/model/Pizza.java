@@ -2,6 +2,8 @@ package org.lessons.java.spring_la_mia_pizzeria_relazioni.model;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -35,6 +37,7 @@ public class Pizza {
     private double price;
 
     @OneToMany(mappedBy = "pizza")
+    @JsonManagedReference
     private List<SpecialOffers> specialOffers;
 
     @ManyToMany
@@ -42,6 +45,7 @@ public class Pizza {
     joinColumns = @JoinColumn(name="pizza_id"),
     inverseJoinColumns = @JoinColumn(name="ingredient_id")
      )
+     @JsonManagedReference
     private List<Ingredient> ingredients;
 
 

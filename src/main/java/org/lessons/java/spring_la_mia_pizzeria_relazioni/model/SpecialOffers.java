@@ -2,6 +2,8 @@ package org.lessons.java.spring_la_mia_pizzeria_relazioni.model;
 
 import java.sql.Date;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -22,6 +24,7 @@ public class SpecialOffers {
 
     @ManyToOne
     @JoinColumn(name = "pizza_id", nullable = false)
+    @JsonBackReference
     private Pizza pizza;
 
     @NotBlank(message = "title is required")
